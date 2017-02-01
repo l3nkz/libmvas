@@ -1,5 +1,5 @@
-#include <segment.h>
-#include <vas.h>
+#include <mvas/segment.h>
+#include <mvas/vas.h>
 
 #include <linux/vas.h>
 
