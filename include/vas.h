@@ -13,6 +13,15 @@
 extern "C" {
 #endif
 
+#define SYS_vas_create __NR_vas_create
+#define SYS_vas_delete __NR_vas_delete
+#define SYS_vas_find __NR_vas_find
+#define SYS_vas_attach __NR_vas_attach
+#define SYS_vas_detach __NR_vas_detach
+#define SYS_vas_switch __NR_vas_switch
+#define SYS_vas_getattr __NR_vas_getattr
+#define SYS_vas_setattr __NR_vas_setattr
+
 typedef __s64 vasid_t;
 
 /**
