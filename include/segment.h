@@ -15,6 +15,14 @@
 extern "C" {
 #endif
 
+#define SYS_segment_create __NR_segment_create
+#define SYS_segment_delete __NR_segment_delete
+#define SYS_segment_find __NR_segment_find
+#define SYS_segment_attach __NR_segment_attach
+#define SYS_segment_detach __NR_segment_detach
+#define SYS_segment_getattr __NR_segment_getattr
+#define SYS_segment_setattr __NR_segment_setattr
+
 typedef __s64 segid_t;
 
 /**
