@@ -29,4 +29,4 @@ include directives:
 ```
 
 In addition you also need to link your final binary against the library. This can be achieved by adding
-`-lmvas` to the and of your compile command (e.g. `gcc -o foo foo.c -lmvas`).
+`-lmvas` to the end of your compile command (e.g. `gcc -o foo foo.c -lmvas`).
