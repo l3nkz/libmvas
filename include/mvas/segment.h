@@ -96,7 +96,7 @@ extern int segment_attach(vasid_t vid, segid_t sid, int type);
  *
  * @returns:                0 on success, -1 on failure (setting errno).
  **/
-extern int segment_detach(vasid_t, segid_t sid);
+extern int segment_detach(vasid_t vid, segid_t sid);
 
 /**
  * Get the attributes of a segment.

@@ -14,7 +14,7 @@ segid_t segment_create(const char * const name, unsigned long start,
 {
     segid_t id;
 
-    if (!name) {
+    if (!name || (end <= start)) {
         errno = EINVAL;
         return -1;
     }
