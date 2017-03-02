@@ -116,6 +116,11 @@ int vas_switch(vasid_t vid)
     }
 }
 
+vasid_t active_vas(void)
+{
+    return syscall(SYS_active_vas);
+}
+
 int vas_getattr(vasid_t vid, struct vas_attr * const attr)
 {
     long ret;

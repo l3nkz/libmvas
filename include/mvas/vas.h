@@ -21,6 +21,7 @@ extern "C" {
 #define SYS_vas_switch __NR_vas_switch
 #define SYS_vas_getattr __NR_vas_getattr
 #define SYS_vas_setattr __NR_vas_setattr
+#define SYS_active_vas __NR_active_vas
 
 typedef __s64 vasid_t;
 
@@ -95,6 +96,14 @@ extern int vas_detach(pid_t pid, vasid_t vid);
  * @returns:                0 on success, -1 on failure (setting errno).
  **/
 extern int vas_switch(vasid_t vid);
+
+/**
+ * Get the ID of the activated VAS for the current task.
+ *
+ * @returns:                The ID of the active VAS if any, 0 otherwise when the
+ *                          task runs in its original AS at the moment.
+ **/
+extern vasid_t active_vas(void);
 
 /**
  * Get the attributes of a VAS.
