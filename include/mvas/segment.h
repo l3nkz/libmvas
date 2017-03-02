@@ -23,7 +23,7 @@ extern "C" {
 #define SYS_segment_getattr __NR_segment_getattr
 #define SYS_segment_setattr __NR_segment_setattr
 
-typedef __s64 segid_t;
+typedef int segid_t;
 
 /**
  * Create a new segment.

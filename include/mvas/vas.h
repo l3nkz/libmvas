@@ -23,7 +23,7 @@ extern "C" {
 #define SYS_vas_setattr __NR_vas_setattr
 #define SYS_active_vas __NR_active_vas
 
-typedef __s64 vasid_t;
+typedef int vasid_t;
 
 /**
  * Create a new VAS.
