@@ -15,13 +15,13 @@
 extern "C" {
 #endif
 
-#define SYS_segment_create __NR_segment_create
-#define SYS_segment_delete __NR_segment_delete
-#define SYS_segment_find __NR_segment_find
-#define SYS_segment_attach __NR_segment_attach
-#define SYS_segment_detach __NR_segment_detach
-#define SYS_segment_getattr __NR_segment_getattr
-#define SYS_segment_setattr __NR_segment_setattr
+#define SYS_vas_seg_create __NR_vas_seg_create
+#define SYS_vas_seg_delete __NR_vas_seg_delete
+#define SYS_vas_seg_find __NR_vas_seg_find
+#define SYS_vas_seg_attach __NR_vas_seg_attach
+#define SYS_vas_seg_detach __NR_vas_seg_detach
+#define SYS_vas_seg_getattr __NR_vas_seg_getattr
+#define SYS_vas_seg_setattr __NR_vas_seg_setattr
 
 typedef int segid_t;
 
@@ -108,7 +108,7 @@ extern int segment_detach(vasid_t vid, segid_t sid);
  *
  * @returns:                0 on success, -1 on failure (setting errno).
  **/
-extern int segment_getattr(segid_t sid, struct segment_attr * const attr);
+extern int segment_getattr(segid_t sid, struct vas_seg_attr * const attr);
 
 /**
  * Change the attributes of a segment.
@@ -121,7 +121,7 @@ extern int segment_getattr(segid_t sid, struct segment_attr * const attr);
  * @returns:                0 on success, -1 on failure (setting errno).
  **/
 extern int segment_setattr(segid_t sid,
-                           const struct segment_attr * const attr);
+                           const struct vas_seg_attr * const attr);
 
 #ifdef __cplusplus
 }

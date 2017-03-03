@@ -19,7 +19,7 @@ segid_t segment_create(const char * const name, unsigned long start,
         return -1;
     }
 
-    id = syscall(SYS_segment_create, name, start, end, mode);
+    id = syscall(SYS_vas_seg_create, name, start, end, mode);
     if (id < 0) {
         errno = -id;
         return -1;
@@ -43,7 +43,7 @@ int segment_delete(segid_t sid)
         return -1;
     }
 
-    ret = syscall(SYS_segment_delete, sid);
+    ret = syscall(SYS_vas_seg_delete, sid);
     if (ret < 0) {
         errno = -ret;
         return -1;
@@ -61,7 +61,7 @@ segid_t segment_find(const char * const name)
         return -1;
     }
 
-    id = syscall(SYS_segment_find, name);
+    id = syscall(SYS_vas_seg_find, name);
     if (id < 0) {
         errno = -id;
         return -1;
@@ -79,7 +79,7 @@ int segment_attach(vasid_t vid, segid_t sid, int type)
         return -1;
     }
 
-    ret = syscall(SYS_segment_attach, vid, sid, type);
+    ret = syscall(SYS_vas_seg_attach, vid, sid, type);
     if (ret < 0) {
         errno = -ret;
         return -1;
@@ -97,7 +97,7 @@ int segment_detach(vasid_t vid, segid_t sid)
         return -1;
     }
 
-    ret = syscall(SYS_segment_detach, vid, sid);
+    ret = syscall(SYS_vas_seg_detach, vid, sid);
     if (ret < 0) {
         errno = -ret;
         return -1;
@@ -106,7 +106,7 @@ int segment_detach(vasid_t vid, segid_t sid)
     }
 }
 
-int segment_getattr(segid_t sid, struct segment_attr * const attr)
+int segment_getattr(segid_t sid, struct vas_seg_attr * const attr)
 {
     long ret;
 
@@ -115,7 +115,7 @@ int segment_getattr(segid_t sid, struct segment_attr * const attr)
         return -1;
     }
 
-    ret = syscall(SYS_segment_getattr, sid, attr);
+    ret = syscall(SYS_vas_seg_getattr, sid, attr);
     if (ret < 0) {
         errno = -ret;
         return -1;
@@ -124,7 +124,7 @@ int segment_getattr(segid_t sid, struct segment_attr * const attr)
     }
 }
 
-int segment_setattr(segid_t sid, const struct segment_attr * const attr)
+int segment_setattr(segid_t sid, const struct vas_seg_attr * const attr)
 {
     long ret;
 
@@ -133,7 +133,7 @@ int segment_setattr(segid_t sid, const struct segment_attr * const attr)
         return -1;
     }
 
-    ret = syscall(SYS_segment_setattr, sid, attr);
+    ret = syscall(SYS_vas_seg_setattr, sid, attr);
     if (ret < 0) {
         errno = -ret;
         return -1;
