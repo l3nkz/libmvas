@@ -156,3 +156,34 @@ int vas_setattr(vasid_t vid, const struct vas_attr * const attr)
         return 0;
     }
 }
+
+vasid_t vas_fork(pid_t pid)
+{
+    vasid_t id;
+
+    id = syscall(SYS_vas_fork, pid);
+    if (id < 0) {
+        errno = -id;
+        return -1;
+    } else {
+        return id;
+    }
+}
+
+int vas_exec(pid_t pid, vasid_t vid)
+{
+    long ret;
+
+    if (vid <= 0) {
+        errno = EINVAL;
+        return -1;
+    }
+
+    ret = syscall(SYS_vas_exec, pid, vid);
+    if (ret < 0) {
+        errno = -ret;
+        return -1;
+    } else {
+        return 0;
+    }
+}

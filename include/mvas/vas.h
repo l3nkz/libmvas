@@ -22,6 +22,8 @@ extern "C" {
 #define SYS_vas_getattr __NR_vas_getattr
 #define SYS_vas_setattr __NR_vas_setattr
 #define SYS_active_vas __NR_active_vas
+#define SYS_vas_fork __NR_vas_fork
+#define SYS_vas_exec __NR_vas_exec
 
 typedef int vasid_t;
 
@@ -128,6 +130,31 @@ extern int vas_getattr(vasid_t vid, struct vas_attr * const attr);
  * @returns:                0 on success, -1 on failure (setting errno).
  **/
 extern int vas_setattr(vasid_t vid, const struct vas_attr * const attr);
+
+/**
+ * Convert the current task's AS into a VAS-CP.
+ *
+ * @param[in] pid:          The pid of the task for which a checkpoint should
+ *                          be taken, or 0 if the checkpoint should be taken of
+ *                          the current task.
+ *
+ * @returns:                The ID of the VAS that contains the CP or -1 on
+ *                          failure (setting errno).
+ **/
+extern vasid_t vas_fork(pid_t pid);
+
+/**
+ * Change the current task's AS to a VAS-CP.
+ *
+ * @param[in] pid:          The pid of the task that should be restored to the
+ *                          given checkpoint, or 0 if the current task should be
+ *                          restored.
+ * @param[in] vid:          The ID of the VAS that contains the checkpoint of
+ *                          the application.
+ *
+ * @returns:                0 on success, -1 on failure (setting errno).
+ **/
+extern int vas_exec(pid_t pid, vasid_t vid);
 
 #ifdef __cplusplus
 }
