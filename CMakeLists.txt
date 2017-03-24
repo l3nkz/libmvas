@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.1)
 
-project(libvas)
+project(libmvas)
 
 # Define where to save the final libraries and binaries
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
